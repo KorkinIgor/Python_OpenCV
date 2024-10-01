@@ -1,0 +1,20 @@
+import cv2
+
+
+#img = cv2.imread("image/MyOpenCVImage.webp")
+#cv2.imshow('Result', img)
+
+#cv2.waitKey(0) #картинка работает все время
+
+
+#Видео
+cap = cv2.VideoCapture('video/MyOpenCVVideo.mp4')
+cap.set(3,500)
+cap.set(4,300)
+
+while True:
+    success, img = cap.read()
+    cv2.imshow("Video", img)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
