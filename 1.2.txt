@@ -1,0 +1,20 @@
+import cv2
+import numpy as num
+from cv2.gapi import kernel
+
+img = cv2.imread("image/MyOpenCVImage.webp")
+new_img = cv2.resize(img, (img.shape[1] // 2, img.shape[0] // 2))  #картинка пропарционально уменьшилась в 2 раза
+#img = cv2.GaussianBlur(img, (1, 1), 0)  #заблюривание картинки
+#cv2.imshow('Result', img[0:100, 0:150])  #выводится определенная часть картинки
+
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+img = cv2.Canny(img, 90, 90)
+
+kern = num.ones((5, 5, 5, 5, 5), num.uint8)
+img = cv2.dilate(img,kern, iterations=10)
+
+cv2.imshow('Result', img)
+print(img.shape)
+
+cv2.waitKey(0)
+
